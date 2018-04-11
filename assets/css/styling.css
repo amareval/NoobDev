@@ -1,4 +1,283 @@
 body {
     box-sizing: border-box;
+    font-family: 'Roboto';
+    /* font-family: 'Helvetica Neue'; */
+    background: rgb(235, 235, 235);
+    background: linear-gradient(to bottom, rgb(216, 216, 216), white);
+
+}
+
+header {
+    /* background: black; */
+    background: linear-gradient(to top left, black, rgb(48, 48, 48));
+
+    padding: 75px;
+    color: white;
+    letter-spacing: 5px;
+}
+
+
+#title {
+    text-align: center;
+    font-size: 36px;
+}
+
+/* ============ SEARCH BAR ============ */
+
+.form-inline {
+    margin: 0 auto;
+    padding: 5px;
+}
+
+
+.navbar {
+    width: 100%;
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 15px -1px lightslategray;
+}
+
+.dropdown-skill-level {
+    margin-left: 50px;
+}
+
+.dropdown-language {
+    margin-left: 50px;
+}
+
+.dropdown button {
+    border: 1px solid lightgray;
+    font-size: 12px;
+    margin-left: 30px;
+    /* border-radius: 0; */
+
+}
+
+.dropdown-toggle {
+    width: 250px;
+    letter-spacing: 0.5px;
+}
+
+.dropdown-item {
+    font-size: 12px;
+}
+
+.dropdown-menu li {
+    text-align: center;
+    width: 250px;
+    letter-spacing: 3px;
+}
+
+
+.dropdown-menu li:hover {
+    cursor: pointer;
+}
+
+.keywords {
+    margin-right: 20px;
+}
+
+#keywords-input {
+    font-size: 12px;
+    text-align: center;
+    width: 250px;
+    /* border-radius: 0; */
+    letter-spacing: 3.5px;
+}
+
+#submit-button {
+    background: black;
+    color: white;
+    box-shadow: 2px 5px 20px -1px slategray;
+    font-size: 12px;
+    width: 250px;
+    margin-right: 50px;
+    border-radius: 0;
+    letter-spacing: 5px;
+}
+
+.btn:focus,
+#keywords-input:focus {
+    box-shadow: none;
+}
+
+#btnLogin {
+    background: gray;
+    color: white;
+    box-shadow: 2px 5px 20px -1px slategray;
+    font-size: 12px;
+    width: 250px;
+    margin-right: 50px;
+    border-radius: 0;
+    letter-spacing: 5px;
+}
+
+
+
+#submit-button,
+#btnSignUp,
+#btnLogout {
+    background: black;
+    color: white;
+    box-shadow: 2px 5px 20px -1px slategray;
+    font-size: 12px;
+    width: 250px;
+    margin-right: 50px;
+    border-radius: 0;
+    letter-spacing: 5px;
+}
+
+/* ============ LOGIN ============ */
+.login {
+    height: 350px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background: white;
+}
+
+.login p {
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+#txtEmail,
+#txtPassword {
+    width: 80%;
+    margin-bottom: 20px;
     text-align: center;
 }
+
+
+#btnLogin,
+#btnSignUp {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+
+/* ============ RESULTS BODY ============ */
+
+.google-results {
+    /* background: rgb(235, 235, 235); */
+    background: white;
+    box-shadow: 0px 2px 15px -2px  darkgray;
+
+    height: 500px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.google-results-header {
+    color: white;
+    background: linear-gradient(to right, black, rgb(216, 216, 216));
+    /* background: linear-gradient(to left, black, rgb(216, 216, 216)); */
+    display: inline-block;
+    padding: 10px 40px 10px 80px;
+    margin-top: 30px;
+    letter-spacing: 5px;
+
+    position: absolute;
+    left: -20px;
+}
+
+.google-item {
+    padding: 20px;
+    width: 95%;
+    border: 1px solid lightgray;
+    box-shadow: 0px 2px 15px -5px  darkgray;
+
+}
+
+#google-item-1 {
+    position: absolute;
+    display: inline-block;
+    top: 100px;
+    left: 20px;
+}
+
+#google-item-2 {
+    position: absolute;
+    display: inline-block;
+    top: 225px;
+    left: 20px;
+}
+
+#google-item-3 {
+    position: absolute;
+    display: inline-block;
+    top: 350px;
+    left: 20px;
+}
+
+.google-item-title {
+    font-size: 24px;
+}
+
+.google-item p {
+    margin-bottom: 0;
+}
+
+.google-item-description {
+    font-size: 14px;
+}
+
+ /* ============ UDEMY RESULTS ============ */
+
+.udemy-results {
+    /* background: rgb(235, 235, 235); */
+    background: white;    
+    box-shadow: 0px 2px 15px -2px  darkgray;
+
+    height: 300px;
+    position: relative;
+
+}
+
+.udemy-results-title {
+    background: linear-gradient(to top right, rgb(128, 1, 96), rgb(241, 0, 241));
+    color: white;
+    box-shadow: 0px 2px 15px -1px  darkgray;
+
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    letter-spacing: 5px;
+    position: absolute;
+        
+}
+
+
+ /* ============ YOUTUBE RESULTS ============ */
+
+.youtube-results {
+    /* background: rgb(235, 235, 235); */
+    /* box-shadow: 0px 2px 15px -2px  darkgray; */
+
+    height: 300px;
+    /* padding: 25px; */
+
+    margin-bottom: 150px;
+}
+
+#youtube-video {
+    display: block;
+    margin: auto;
+    background: white;    
+
+    /* border-radius: 5px; */
+    border: none;
+    box-shadow: 0px 2px 15px -2px  darkgray;
+
+}
+
+/* ============ FOOTER ============ */
+footer {
+    text-align: center;
+    padding: 50px;
+    font-size: 14px;
+    color: white;
+    background: darkgray;
+}
+

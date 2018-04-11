@@ -2,50 +2,172 @@
 <head>
     <title>noobdev</title>
 
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
-
-    <link rel="stylesheet" type="text/css" href="assets/css/styling.css">
-
+    <!-- BOOTSTRAP CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!-- ORIGINAL RESET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+
+    <!-- ORIGINAL CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/styling.css">
+
+    <!-- JQUERY CDN -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+    <!-- FIREBASE CDN -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
+    <!-- MOMENTJS CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <!-- GOOGLE FONT CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 
 </head>
 
 <body>
 
     <header>
-        <h1>noobdev</h1>
+        <div class='bg-layer'>
+            <p id="title">noobdev</p>
+        </div>
     </header>
 
+    <!-- =============== SEARCH BAR ================= -->
     <div class='nav'>
-            <nav class="navbar navbar-light bg-light">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="language" aria-label="language">
-                    <input class="form-control mr-sm-2" type="search" placeholder="skill level" aria-label="skill level">
-                    <input class="form-control mr-sm-2" type="search" placeholder="keywords" aria-label="keywords">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </nav>
+
+        <nav class="navbar navbar-light bg-light">
+
+            <form class="form-inline">
+
+                <!-- =============== DROPDOWN MENU FOR 'LANGUAGES' ================= -->
+                <div class="dropdown btn-group dropdown-language">
+
+                    <button class="btn dropdown-toggle language-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        choose a programming concept
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li class="dropdown-item" id="basic">basic</li>
+                        <li class="dropdown-item" id="bootstrap">bootstrap</li>
+                        <li class="dropdown-item" id="c">c</li>
+                        <li class="dropdown-item" id="c-plus-plus">c++</li>
+                        <li class="dropdown-item" id="c-sharp">c#</li>
+                        <li class="dropdown-item" id="css">css</li>
+                        <li class="dropdown-item" id="git">git</li>
+                        <li class="dropdown-item" id="html">html</li>
+                        <li class="dropdown-item" id="java">java</li>
+                        <li class="dropdown-item" id="javascript">javascript</li>
+                        <li class="dropdown-item" id="jquery">jquery</li>
+                        <li class="dropdown-item" id="objective-c">objective-c</li>
+                        <li class="dropdown-item" id="php">perl</li>
+                        <li class="dropdown-item" id="php">php</li>
+                        <li class="dropdown-item" id="python">python</li>
+                        <li class="dropdown-item" id="ruby">ruby</li>
+                        <li class="dropdown-item" id="sql">sql</li>
+                        <li class="dropdown-item" id="swift">swift</li>
+
+                    </div>
+
+                </div>
+
+                <!-- =============== DROPDOWN MENU FOR 'SKILL LEVEL' ================= -->
+                <div class="dropdown btn-group dropdown-skill-level">
+
+                    <button class="btn dropdown-toggle skill-level-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        choose your skill level
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li class="dropdown-item" id="beginner">beginner</li>
+                        <li class="dropdown-item" id="intermediate">intermediate</li>
+                        <li class="dropdown-item" id="advanced">advanced</li>                        
+                    </div>
+                </div>
+
+                <!-- =============== SEARCH BAR FOR 'KEYWORDS' ================= -->    
+                <div class="keywords">
+                    <input class="form-control mx-5" type="search" placeholder="keywords" aria-label="keywords" id="keywords-input">
+                </div>
+
+                <!-- =============== SUBMIT BUTTON ================= -->    
+                <button class="btn btn-lg my-2 my-sm-0" type="submit" id="submit-button">submit</button>
+
+            </form>
+            
+        </nav>
+           
     </div>
 
-    <div class="google-results">
+
+    <div class="container results-body">
+
+        <!-- =============== DISPLAY GOOGLE RESULTS HERE ================= -->
+        <div class="row">
+            <div class="col-12">
+                <div class="google-results">
+                    <div class="google-results-header">TOP GOOGLE SEARCHES</div>
+
+                    <!-- <div class="google-item" id="google-item-1">
+                        <p class="google-item-title">Advanced JavaScript | Microsoft Docs</p>
+                        <p class="google-item-url"><a href="#">http://www.#.com</a></p>
+                        <p class="google-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+
+                    <div class="google-item" id="google-item-2">
+                        <p class="google-item-title">Learning Advanced JavaScript - John Resig</p>
+                        <p class="google-item-url"><a href="#">http://www.#.com</a></p>
+                        <p class="google-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+
+                    <div class="google-item" id="google-item-3">
+                        <p class="google-item-title">Advanced Javascript | Udemy</p>
+                        <p class="google-item-url"><a href="#">http://www.#.com</a></p>
+                        <p class="google-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- =============== DISPLAY UDEMY RESULT HERE ================= -->
+            <div class="col-5">
+                <div class="udemy-results">
+                    <div class="udemy-results-title">FROM UDEMY</div>
+                </div>
+            </div>
+
+            <!-- =============== EMPTY DIV TO SEPARATE UDEMY & YOUTUBE RESULTS ================= -->
+            <div class="col-2"></div>
+
+            <!-- =============== DISPLAY YOUTUBE RESULT HERE ================= -->
+            <div class="col-5">
+                <div class="youtube-results">
+                    <!-- <iframe width="450" height="300" id="youtube-video" src="https://www.youtube.com/embed/fju9ii8YsGs"></iframe> -->
+                    <iframe id="youtube-video" type="text/html" width="450" height="300" src="" frameborder="0"></iframe>
+
+                </div>
+            </div>
+            
+        </div>
 
     </div>
 
-    <div class="udemy-results">
+    <footer>
+        <p>&copy; ayyTeam 2018</p>
+    </footer>
 
-    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-    <div class="youtube-results">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
+    <!-- ORIGINAL JAVASCRIPT -->
     <script src="assets/javascript/noob.js"></script>
-    
+
 </body>
