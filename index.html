@@ -39,10 +39,10 @@
 
         <nav class="navbar navbar-light bg-light">
 
-            <form class="form-inline">
+            <div class="form-inline">
 
                 <!-- =============== DROPDOWN MENU FOR 'LANGUAGES' ================= -->
-                <div class="dropdown btn-group dropdown-language">
+                <div class="dropdown btn-group dropdown-language nav-item">
 
                     <button class="btn dropdown-toggle language-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         choose a programming concept
@@ -73,7 +73,7 @@
                 </div>
 
                 <!-- =============== DROPDOWN MENU FOR 'SKILL LEVEL' ================= -->
-                <div class="dropdown btn-group dropdown-skill-level">
+                <div class="dropdown btn-group dropdown-skill-level nav-item">
 
                     <button class="btn dropdown-toggle skill-level-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         choose your skill level
@@ -87,14 +87,14 @@
                 </div>
 
                 <!-- =============== SEARCH BAR FOR 'KEYWORDS' ================= -->    
-                <div class="keywords">
-                    <input class="form-control mx-5" type="search" placeholder="keywords" aria-label="keywords" id="keywords-input">
+                <div class="keywords nav-item">
+                    <input class="form-control" type="search" placeholder="keywords" aria-label="keywords" id="keywords-input">
                 </div>
 
                 <!-- =============== SUBMIT BUTTON ================= -->    
-                <button class="btn btn-lg my-2 my-sm-0" type="submit" id="submit-button">submit</button>
+                <button class="btn btn-lg nav-item" type="submit" id="submit-button">submit</button>
 
-            </form>
+            </div>
             
         </nav>
            
@@ -134,20 +134,20 @@
         <div class="row">
 
             <!-- =============== DISPLAY UDEMY RESULT HERE ================= -->
-            <div class="col-5">
+            <div class="col-md-5 col-xs-12">
                 <div class="udemy-results">
                     <div class="udemy-results-title">FROM UDEMY</div>
                 </div>
             </div>
 
             <!-- =============== EMPTY DIV TO SEPARATE UDEMY & YOUTUBE RESULTS ================= -->
-            <div class="col-2"></div>
+            <div class="col-md-2 col-xs-0"></div>
 
             <!-- =============== DISPLAY YOUTUBE RESULT HERE ================= -->
-            <div class="col-5">
-                <div class="youtube-results">
+            <div class="col-md-5 col-xs-12">
+                <div class="youtube-results embed-responsive">
                     <!-- <iframe width="450" height="300" id="youtube-video" src="https://www.youtube.com/embed/fju9ii8YsGs"></iframe> -->
-                    <iframe id="youtube-video" type="text/html" width="450" height="300" src="" frameborder="0"></iframe>
+                    <iframe class="embed-responsive-item" id="youtube-video" type="text/html" width="450" height="300" src="" frameborder="0"></iframe>
 
                 </div>
             </div>
