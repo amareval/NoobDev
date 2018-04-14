@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<head>
+    <title>noobdev</title>
+
+    <!-- BOOTSTRAP CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- ORIGINAL RESET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+
+    <!-- ORIGINAL CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/styling.css">
+
+    <!-- SLICK CAROUSEL -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+
+    <!-- GOOGLE FONT CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <!-- FIREBASE  -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+                apiKey: "AIzaSyDXQDppaCOYjObESzBkDMa5HWgrc_ImwKM",
+                authDomain: "noobdev-7d103.firebaseapp.com",
+                databaseURL: "https://noobdev-7d103.firebaseio.com",
+                projectId: "noobdev-7d103",
+                storageBucket: "noobdev-7d103.appspot.com",
+                messagingSenderId: "207322281576"
+            };
+            firebase.initializeApp(config);
+        </script>
+
+
+</head>
+
+<body>
+
+    <header>
+        <div class='bg-layer'>
+            <p id="title">noobdev</p>
+        </div>
+    </header>
+
+    <!-- =============== SEARCH BAR ================= -->
+    <div class='nav'>
+
+        <nav class="navbar navbar-light bg-light">
+
+            <div class="form-inline">
+
+                <!-- =============== DROPDOWN MENU FOR 'LANGUAGES' ================= -->
+                <div class="dropdown btn-group dropdown-language nav-item">
+
+                    <button class="btn dropdown-toggle language-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        choose a programming concept
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li class="dropdown-item" id="basic">basic</li>
+                        <li class="dropdown-item" id="bootstrap">bootstrap</li>
+                        <li class="dropdown-item" id="c">c</li>
+                        <li class="dropdown-item" id="c-plus-plus">c++</li>
+                        <li class="dropdown-item" id="c-sharp">c#</li>
+                        <li class="dropdown-item" id="css">css</li>
+                        <li class="dropdown-item" id="git">git</li>
+                        <li class="dropdown-item" id="html">html</li>
+                        <li class="dropdown-item" id="java">java</li>
+                        <li class="dropdown-item" id="javascript">javascript</li>
+                        <li class="dropdown-item" id="jquery">jquery</li>
+                        <li class="dropdown-item" id="objective-c">objective-c</li>
+                        <li class="dropdown-item" id="php">perl</li>
+                        <li class="dropdown-item" id="php">php</li>
+                        <li class="dropdown-item" id="python">python</li>
+                        <li class="dropdown-item" id="ruby">ruby</li>
+                        <li class="dropdown-item" id="sql">sql</li>
+                        <li class="dropdown-item" id="swift">swift</li>
+
+                    </div>
+
+                </div>
+
+                <!-- =============== DROPDOWN MENU FOR 'SKILL LEVEL' ================= -->
+                <div class="dropdown btn-group dropdown-skill-level nav-item">
+
+                    <button class="btn dropdown-toggle skill-level-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        choose your skill level
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li class="dropdown-item" id="beginner">beginner</li>
+                        <li class="dropdown-item" id="intermediate">intermediate</li>
+                        <li class="dropdown-item" id="advanced">advanced</li>                        
+                    </div>
+                </div>
+
+                <!-- =============== SEARCH BAR FOR 'KEYWORDS' ================= -->    
+                <div class="keywords nav-item">
+                    <input class="form-control" type="search" placeholder="keywords" aria-label="keywords" id="keywords-input">
+                </div>
+
+                <!-- =============== SUBMIT BUTTON ================= -->    
+                <button class="btn btn-lg nav-item" type="submit" id="submit-button">
+                    submit
+                </button>
+
+
+                <button id="btnLogout" class="btn btn-action nav-item" type="button">
+                    log out
+                </button>
+
+            </div>
+            
+        </nav>
+           
+    </div>
+    <div class="row">
+            <div class="col-12 favorites-div">
+                <div class="favorite-buttons-div">
+                        <div class="favorites-header">SEARCH HISTORY</div>
+
+                </div>
+            </div>
+    </div>
+
+
+    <!-- =============== DISPLAY YOUTUBE RESULT HERE ================= -->
+
+
+    <div class="row youtube-row slider col-12">
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-1" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+            
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-2" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+    
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-3" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-4" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-5" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-6" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-7" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+            
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-8" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-9" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+
+            <div>
+                <iframe class="youtube-results embed-responsive embed-responsive-item youtube-video" id="youtube-video-10" type="text/html" width="300" height="250" src="" frameborder="0"></iframe>
+            </div>
+    </div>
+    
+
+
+
+    <div class="container results-body">
+
+        <!-- =============== DISPLAY GOOGLE RESULTS HERE ================= -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="khan-results">
+                    <div class="khan-results-header">FROM KHAN ACADEMY</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- <footer>
+        <p>&copy; ayyTeam 2018</p>
+    </footer> -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- ORIGINAL JAVASCRIPT -->
+    <script src="assets/javascript/noob.js"></script>
+
+</body>
