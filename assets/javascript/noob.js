@@ -5,6 +5,7 @@ $(document).ready(function() {
   var userLanguage;
   var userSkillLevel;
   var userKeywords;
+  var favoriteButton;
 
 
   // AUTHORIZE USER LOG-IN
@@ -34,7 +35,7 @@ $(document).ready(function() {
 
   // TAKE VALUES FROM DROPDOWN MENUS
   $(".dropdown-language li").on('click', function(){
-    $(".language-button").text($(this).text());
+    $(".language-button").html($(this).html());
 
     userChoice = $(this).attr('id');
     userLanguage = userChoice;
@@ -56,11 +57,6 @@ $(document).ready(function() {
 
     event.preventDefault();
 
-    $('.language-button').text('choose a programming concept');
-    $('.skill-level-button').text('choose your skill level');
-    $('#keywords-input').val('');
-
-
     userKeywords = $('#keywords-input').val().trim();
     console.log("User's keyword: " + userKeywords);
 
@@ -75,6 +71,11 @@ $(document).ready(function() {
       favorite: userSkillLevel + ' ' + userLanguage
     }); // end WRITE DATA from firebase
 
+    // CLEAR SEARCH FIELDS
+    $('.language-button').text('choose a programming concept');
+    $('.skill-level-button').text('choose your skill level');
+    $('#keywords-input').val('');
+
   }); // end SUBMIT BUTTON
 
   // READ DATA FROM FIREBASE AND DISPLAY IN WINDOW
@@ -86,10 +87,21 @@ $(document).ready(function() {
   
       // CREATE 'FAVORITE' BUTTON BASED ON USER SELECTIONS
       var favoriteButtonsDiv = $('.favorite-buttons-div');
-      var favoriteButton = $('<button class="favorite-button">');
+      favoriteButton = $('<button class="favorite-button">');
       favoriteButton.attr('favorite-data', ts.favorite);
-      favoriteButton.html(ts.favorite);
+
+      if (ts.userSkillLevel == 'beginner') {
+        favoriteButton.attr('id', 'beginner-button');
+      } else if (ts.userSkillLevel == 'intermediate') {
+        favoriteButton.attr('id', 'intermediate-button');
+      } else if (ts.userSkillLevel == 'advanced') {
+        favoriteButton.attr('id', 'advanced-button');
+      }
+
+      favoriteButton.html(ts.userLanguage + ' - ' + ts.userKeywords);
       favoriteButtonsDiv.append(favoriteButton);
+
+
   
   
       // ============== YOUTUBE API ================ //
