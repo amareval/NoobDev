@@ -22,6 +22,14 @@ header {
     font-size: 36px;
 }
 
+
+/* ============ LOG IN  ============ */
+#firebaseui-auth-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
 /* ============ SEARCH BAR ============ */
 
 .form-inline {
@@ -32,7 +40,7 @@ header {
 
 .navbar {
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     box-shadow: 0px 0px 15px -1px lightslategray;
 }
 
@@ -116,14 +124,23 @@ header {
 
 
 #submit-button,
-#btnSignUp,
-#btnLogout {
+#btnSignUp {
     background: black;
     color: white;
-    box-shadow: 2px 5px 20px -1px slategray;
+    box-shadow: 2px 5px 10px -3px slategray;
     font-size: 12px;
     width: 250px;
     margin-right: 50px;
+    border-radius: 0;
+    letter-spacing: 5px;
+}
+
+#btnLogout {
+    background: gray;
+    color: white;
+    box-shadow: 2px 5px 10px -3px slategray;
+    font-size: 12px;
+    width: 250px;
     border-radius: 0;
     letter-spacing: 5px;
 }
@@ -160,7 +177,46 @@ header {
 
 /* ============ RESULTS BODY ============ */
 
-.google-results {
+
+.favorite-buttons-div {
+    /* background: rgb(235, 235, 235); */
+    background: white;
+    box-shadow: 0px 2px 15px -5px  darkgray;
+    height: auto;
+    position: relative;
+    /* padding: 20px; */
+    width: 80%;
+    margin: 0px auto 50px auto;
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+.favorites-header {
+    color: white;
+    background: linear-gradient(to right, black, rgb(216, 216, 216));
+    display: inline-block;
+    padding: 10px 40px 10px 80px;
+    letter-spacing: 5px;
+    position: absolute;
+    left: -20px;
+    top: 10px;
+}
+
+
+.favorite-button {
+    background: rgb(98, 158, 197);
+    color: white;
+    box-shadow: 1px 3px 5px -1px slategray;
+    font-size: 12px;
+    border-radius: 0;
+    letter-spacing: 3px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    margin: 10px
+}
+
+
+.khan-results {
     /* background: rgb(235, 235, 235); */
     background: white;
     box-shadow: 0px 2px 15px -2px  darkgray;
@@ -170,9 +226,9 @@ header {
     position: relative;
 }
 
-.google-results-header {
+.khan-results-header {
     color: white;
-    background: linear-gradient(to right, black, rgb(216, 216, 216));
+    background: linear-gradient(to right, black, rgb(146, 230, 157));
     /* background: linear-gradient(to left, black, rgb(216, 216, 216)); */
     display: inline-block;
     padding: 10px 40px 10px 80px;
@@ -183,7 +239,7 @@ header {
     left: -20px;
 }
 
-.google-item {
+.khan-item {
     padding: 20px;
     width: 95%;
     border: 1px solid lightgray;
@@ -191,36 +247,36 @@ header {
 
 }
 
-#google-item-1 {
+#khan-item-1 {
     position: absolute;
     display: inline-block;
     top: 100px;
     left: 20px;
 }
 
-#google-item-2 {
+#khan-item-2 {
     position: absolute;
     display: inline-block;
     top: 225px;
     left: 20px;
 }
 
-#google-item-3 {
+#khan-item-3 {
     position: absolute;
     display: inline-block;
     top: 350px;
     left: 20px;
 }
 
-.google-item-title {
+.khan-item-title {
     font-size: 24px;
 }
 
-.google-item p {
+.khan-item p {
     margin-bottom: 0;
 }
 
-.google-item-description {
+.khan-item-description {
     font-size: 14px;
 }
 
@@ -253,26 +309,39 @@ header {
 
  /* ============ YOUTUBE RESULTS ============ */
 
+
+ .youtube-row {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+
 .youtube-results {
-    /* background: rgb(235, 235, 235); */
-    /* box-shadow: 0px 2px 15px -2px  darkgray; */
-
-    height: 300px;
-    /* padding: 25px; */
-
-    margin-bottom: 150px;
+    display: inline-block;
+    box-shadow: 2px 5px 15px -2px  darkgray;
+    height: 250px;
+    width: 375px;
+    margin: 20px;
+    border-radius: 5px;
+    background: white;
 }
 
-#youtube-video {
-    display: block;
-    margin: auto;
-    background: white;    
 
-    /* border-radius: 5px; */
-    border: none;
-    box-shadow: 0px 2px 15px -2px  darkgray;
+.youtube-row .youtube-results:hover { 
+    -webkit-transform: scale(1.1);
+  }
 
+
+.slider {
+    width: 95%;
+    margin: 0 auto;
 }
+
+.slick-next,
+.slick-prev {
+    color: blue;
+}
+
 
 /* ============ FOOTER ============ */
 footer {
@@ -286,12 +355,28 @@ footer {
 
 
 
-
-
-
 /* ============ MEDIA QUERIES ============ */
 
-/* ========== 1281px =========== */
+/* ========== 1532px =========== */
+
+@media screen and (max-width: 1531px) {
+    .form-inline {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    #submit-button {
+        display: block;
+        margin: 0 auto;
+    }
+
+    #btnLogout {
+        display: block;
+        margin: 0 auto;
+    }
+}
 
 @media screen and (max-width: 1281px) {
     .form-inline {
@@ -355,7 +440,7 @@ footer {
 
     }
 
-    .google-results-header {
+    .khan-results-header {
         color: white;
         background: linear-gradient(to right, black, rgb(216, 216, 216));
         display: inline-block;
@@ -374,7 +459,7 @@ footer {
         box-shadow: 0px 2px 15px -2px  darkgray;
     }
 
-    #youtube-video {
+    .youtube-video {
         display: none;
         margin: auto;
         background: white;    
@@ -410,7 +495,7 @@ footer {
         margin: 20px auto;
     }
 
-    .google-results-header {
+    .khan-results-header {
         color: white;
         background: linear-gradient(to right, black, rgb(216, 216, 216));
         display: inline-block;
@@ -429,7 +514,7 @@ footer {
         box-shadow: 0px 2px 15px -2px  darkgray;
     }
 
-    #youtube-video {
+    .youtube-video {
         display: none;
         margin: auto;
         background: white;    
@@ -470,7 +555,7 @@ footer {
         margin: 10px;
     }
 
-    .google-results-header {
+    .khan-results-header {
         color: white;
         background: linear-gradient(to right, black, rgb(216, 216, 216));
         display: inline-block;
@@ -490,7 +575,7 @@ footer {
         box-shadow: 0px 2px 15px -2px  darkgray;
     }
 
-    #youtube-video {
+    .youtube-video {
         display: none;
         margin: auto;
         background: white;    
