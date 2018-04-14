@@ -188,21 +188,26 @@ $(document).ready(function() {
     
   }
 
-//MeetUp API
+//MEETUP API on submit button will return language events
 
-        meetupId = '';
-         queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + userFavorite + "&key=" + youTubeId + '&maxResults=10' + '&type=video';
+// $('#submit-button').click(function(event) {
+
+            meetupId = 'key=5b52473129397b281452467819f1446';
+         var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=javascript&radius=20";
+         console.log(queryURL);
     
         $.ajax({
             url: queryURL,
             method: 'GET'
-        }).then(function(response) {
+        }).then(function(data) {
+            $('.khan-results').text(JSON.stringify(data));
 
-            console.log(response);
+            console.log(JSON.stringify(data));
 
 
         });
-        
+    // });
+
     // LOG OUT
   $('#btnLogout').on('click', function() {
 
