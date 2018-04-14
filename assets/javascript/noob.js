@@ -190,7 +190,7 @@ $(document).ready(function() {
 
 //MEETUP API on submit button will return language events
 
-// $('#submit-button').click(function(event) {
+$('#submit-button').click(function(event) {
 
             meetupId = 'key=5b52473129397b281452467819f1446';
          var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=javascript&radius=20";
@@ -206,7 +206,7 @@ $(document).ready(function() {
 
 
         });
-    // });
+    });
 
     // LOG OUT
   $('#btnLogout').on('click', function() {
