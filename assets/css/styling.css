@@ -215,6 +215,17 @@ header {
     margin: 10px
 }
 
+#beginner-button {
+    background: radial-gradient(circle, #CCB97F, #7F6719)
+}
+
+#intermediate-button {
+    background: radial-gradient(circle, #CCCCCC, #7F7F7F)
+}
+
+#advanced-button {
+    background: radial-gradient(circle, #FFCE33, #CCA119)
+}
 
 .khan-results {
     /* background: rgb(235, 235, 235); */
