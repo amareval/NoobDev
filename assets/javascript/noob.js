@@ -188,8 +188,22 @@ $(document).ready(function() {
     
   }
 
+//MeetUp API
 
-  // LOG OUT
+        meetupId = '';
+         queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + userFavorite + "&key=" + youTubeId + '&maxResults=10' + '&type=video';
+    
+        $.ajax({
+            url: queryURL,
+            method: 'GET'
+        }).then(function(response) {
+
+            console.log(response);
+
+
+        });
+        
+    // LOG OUT
   $('#btnLogout').on('click', function() {
 
       firebase.auth().signOut().then(function() {
