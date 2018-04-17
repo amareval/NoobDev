@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   // SUBMIT BUTTON
   $('#submit-button').click(function(event) {
-
+    
     event.preventDefault();
 
     userKeywords = $('#keywords-input').val().trim();
@@ -106,6 +106,7 @@ $(document).ready(function() {
     $('.skill-level-button').text('choose your skill level');
     $('#keywords-input').val('');
 
+    meetupfunk();
 
   }); // end SUBMIT BUTTON
 
@@ -235,40 +236,49 @@ $(document).ready(function() {
   }; // end writeUserData()
   
 
+//Submit button for Meetup API
 
+// $('#submit-button').click(function(event) {
 
-$('#submit-button').click(function(event) {
+     
+         //Function to call the meetup api on the submit function
+    function meetupfunk(){
 
-            meetupId = 'key=5b52473129397b281452467819f1446';
-         var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
-         console.log(queryURL);
-    
+      //API KEY and URL
+      meetupId = 'key=5b52473129397b281452467819f1446';
+    var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
+
         $.ajax({
             url: queryURL,
+            dataType: 'jsonp',
             method: 'GET'
+
         }).then(function(data) {
-            
+          var results = data;
+          console.log(results.data[0].name);
+
+
             // Add the results of the Meetup API, the first upcoming event related to the language input by the user
 
-            $('.meetup-results').append("<div class = 'card-header text-dark text-center font-weight-bold'>" + data[0].name + "</div>");
+            $('.meetup-results').append("<div class = 'card-header text-dark text-center font-weight-bold'>" + results.data[0].name + "</div>");
             $('.card-header').append("<ul class = 'list-group list-group-flush text-dark'> </ul>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'> DATE: " + data[0].local_date + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'> DATE: " + results.data[0].local_date + "</div>");
 
             //convert time from meetup to standard time
-            var militaryTime = (data[0].local_time)
+            var militaryTime = (results.data[0].local_time)
             var time = moment(militaryTime ,'HH:mm').format('hh:mm a');
 
             console.log(time);
 
             //display time, address, venue name
             $('.list-group').append("<div class = 'list-group-item text-dark'>TIME (PST): " + time + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'> VENUE NAME: " + data[0].venue.name + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>ADDRESS: " + data[0].venue.address_1 + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>LINK: " + data[0].link + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'> VENUE NAME: " + results.data[0].venue.name + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>ADDRESS: " + results.data[0].venue.address_1 + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>LINK: " + results.data[0].link + "</div>");
 
 
 
-            var meetupAddress = data[0].venue.address_1;
+            var meetupAddress = results.data[0].venue.address_1;
 
 
 
@@ -276,7 +286,8 @@ $('#submit-button').click(function(event) {
 
 
         });
-    });
+      };
+    // });
 
     // LOG OUT
   $('#btnLogout').on('click', function() {
