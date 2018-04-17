@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   // SUBMIT BUTTON
   $('#submit-button').click(function(event) {
-
+    
     event.preventDefault();
 
     userKeywords = $('#keywords-input').val().trim();
@@ -106,6 +106,7 @@ $(document).ready(function() {
     $('.skill-level-button').text('choose your skill level');
     $('#keywords-input').val('');
 
+    meetupfunk();
 
   }); // end SUBMIT BUTTON
 
@@ -237,12 +238,16 @@ $(document).ready(function() {
 
 //Submit button for Meetup API
 
-$('#submit-button').click(function(event) {
+// $('#submit-button').click(function(event) {
 
-        meetupId = 'key=5b52473129397b281452467819f1446';
-         var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
-         console.log(queryURL);
-    
+     
+         //Function to call the meetup api on the submit function
+    function meetupfunk(){
+
+      //API KEY and URL
+      meetupId = 'key=5b52473129397b281452467819f1446';
+    var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
+
         $.ajax({
             url: queryURL,
             dataType: 'jsonp',
@@ -281,7 +286,8 @@ $('#submit-button').click(function(event) {
 
 
         });
-    });
+      };
+    // });
 
     // LOG OUT
   $('#btnLogout').on('click', function() {
