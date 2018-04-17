@@ -25,12 +25,42 @@ $(document).ready(function() {
   $('.slider').slick({
     dots: true,
     autoplay:true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3500,
+    infinte: true,
+    accessibility: true,
     arrows:true,
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: '.slick-next',
-    prevArrow: '.slick-prev'
+    prevArrow: '.slick-prev',
+    responsive: [
+      {
+        breakpoint: 1650,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1250,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1008,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+      // {
+      //   breakpoint: 980,
+      //   settings: "unslick"
+      // }
+
+    ]
   });
 
   // TAKE VALUES FROM DROPDOWN MENUS
@@ -76,6 +106,7 @@ $(document).ready(function() {
     $('.skill-level-button').text('choose your skill level');
     $('#keywords-input').val('');
 
+
   }); // end SUBMIT BUTTON
 
   // READ DATA FROM FIREBASE AND DISPLAY IN WINDOW
@@ -101,8 +132,9 @@ $(document).ready(function() {
       favoriteButton.html(ts.userLanguage + ' - ' + ts.userKeywords);
       favoriteButtonsDiv.append(favoriteButton);
 
+      var youTubeUpperCase = (ts.favorite).toUpperCase();
+      $('.youtube-header').html('YOUTUBE RESULTS FOR ' + youTubeUpperCase);
 
-  
   
       // ============== YOUTUBE API ================ //
       var youTubeId = 'AIzaSyBtv3FuM4yag2Qpr17dHewi4EmhFzeWEy0';
@@ -138,12 +170,19 @@ $(document).ready(function() {
 
 
       });
+
+
+      // $('#google-maps-display').attr('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyBhSBjmU-q9Jf9qFxhho_cfQjWwo2aJcYs&q=" + ts.destination);
+
   
   
       // ON 'FAVORITE' BUTTON CLICK
       $('.favorite-button').on('click', function() {
         userFavorite = $(this).attr('favorite-data');
         console.log('Favorite: ' + userFavorite);
+
+        var youTubeUpperCase = (userFavorite).toUpperCase();
+        $('.youtube-header').html('YOUTUBE RESULTS FOR ' + youTubeUpperCase);
   
          youTubeId = 'AIzaSyBtv3FuM4yag2Qpr17dHewi4EmhFzeWEy0';
          queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + userFavorite + "&key=" + youTubeId + '&maxResults=10' + '&type=video';
@@ -195,10 +234,6 @@ $(document).ready(function() {
 
   }; // end writeUserData()
   
-
-  function displayYouTubeVideo() {
-    
-  }
 
 
   // LOG OUT

@@ -178,6 +178,20 @@ header {
 /* ============ RESULTS BODY ============ */
 
 
+
+
+
+.slider {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.slick-next:before,
+.slick-prev:before {
+    color: blue;
+}
+
+
 .favorite-buttons-div {
     /* background: rgb(235, 235, 235); */
     background: white;
@@ -186,7 +200,7 @@ header {
     position: relative;
     /* padding: 20px; */
     width: 80%;
-    margin: 0px auto 50px auto;
+    margin: 0px auto 30px auto;
     padding-top: 60px;
     padding-bottom: 10px;
 }
@@ -227,99 +241,21 @@ header {
     background: radial-gradient(circle, #FFCE33, #CCA119)
 }
 
-.khan-results {
-    /* background: rgb(235, 235, 235); */
-    background: white;
-    box-shadow: 0px 2px 15px -2px  darkgray;
-
-    height: 500px;
-    margin-bottom: 50px;
-    position: relative;
-}
-
-.khan-results-header {
-    color: white;
-    background: linear-gradient(to right, black, rgb(146, 230, 157));
-    /* background: linear-gradient(to left, black, rgb(216, 216, 216)); */
-    display: inline-block;
-    padding: 10px 40px 10px 80px;
-    margin-top: 30px;
-    letter-spacing: 5px;
-
-    position: absolute;
-    left: -20px;
-}
-
-.khan-item {
-    padding: 20px;
-    width: 95%;
-    border: 1px solid lightgray;
-    box-shadow: 0px 2px 15px -5px  darkgray;
-
-}
-
-#khan-item-1 {
-    position: absolute;
-    display: inline-block;
-    top: 100px;
-    left: 20px;
-}
-
-#khan-item-2 {
-    position: absolute;
-    display: inline-block;
-    top: 225px;
-    left: 20px;
-}
-
-#khan-item-3 {
-    position: absolute;
-    display: inline-block;
-    top: 350px;
-    left: 20px;
-}
-
-.khan-item-title {
-    font-size: 24px;
-}
-
-.khan-item p {
-    margin-bottom: 0;
-}
-
-.khan-item-description {
-    font-size: 14px;
-}
-
- /* ============ UDEMY RESULTS ============ */
-
-.udemy-results {
-    /* background: rgb(235, 235, 235); */
-    background: white;    
-    box-shadow: 0px 2px 15px -2px  darkgray;
-
-    height: 300px;
-    position: relative;
-
-}
-
-.udemy-results-title {
-    background: linear-gradient(to top right, rgb(128, 1, 96), rgb(241, 0, 241));
-    color: white;
-    box-shadow: 0px 2px 15px -1px  darkgray;
-
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-    letter-spacing: 5px;
-    position: absolute;
-        
-}
 
 
  /* ============ YOUTUBE RESULTS ============ */
 
+ .youtube-header {
+     text-align: center;
+     color: darkgray;
+     /* background: linear-gradient(to right, black, rgb(216, 216, 216)); */
+     font-size: 30px;
+     padding: 15px 40px 15px 80px;
+     /* font-weight: bold; */
+     letter-spacing: 5px;
+     width: 60%;
+     margin: 0 auto;
+ }
 
  .youtube-row {
     margin-bottom: 50px;
@@ -343,15 +279,128 @@ header {
   }
 
 
-.slider {
-    width: 95%;
-    margin: 0 auto;
+
+ /* ============ MEETUP RESULTS ============ */
+
+.meetup-results {
+    /* background: rgb(235, 235, 235); */
+    background: white;
+    box-shadow: 0px 3.5px 10px -5px  gray;
+
+    height: 400px;
+    margin-bottom: 50px;
+    position: relative;
+    margin-top: 50px;
 }
 
-.slick-next,
-.slick-prev {
-    color: blue;
+.meetup-results-header {
+    color: white;
+    background: linear-gradient(to right, rgb(255, 0, 157), rgb(255, 0, 85));
+    /* background: linear-gradient(to left, black, rgb(216, 216, 216)); */
+    display: inline-block;
+    padding: 10px;
+    letter-spacing: 5px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+
+    /* position: absolute;
+    left: -20px; */
+    /* margin-top: 30px; */
+
 }
+
+.meetup-item {
+    padding: 20px;
+    width: 95%;
+    border: 1px solid lightgray;
+    box-shadow: 0px 2px 15px -5px  darkgray;
+
+}
+
+#meetup-item-1 {
+    position: absolute;
+    display: inline-block;
+    top: 100px;
+    left: 20px;
+}
+
+#meetup-item-2 {
+    position: absolute;
+    display: inline-block;
+    top: 225px;
+    left: 20px;
+}
+
+#meetup-item-3 {
+    position: absolute;
+    display: inline-block;
+    top: 350px;
+    left: 20px;
+}
+
+.meetup-item-title {
+    font-size: 24px;
+}
+
+.meetup-item p {
+    margin-bottom: 0;
+}
+
+.meetup-item-description {
+    font-size: 14px;
+}
+
+#meetup-logo {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+
+/* ======== GOOGLE MAPS RESULTS ========== */
+
+.google-maps {
+    /* box-shadow: 0px 5px 20px -5px black; */
+    /* border: 0.5px solid lightgray; */
+    box-shadow: 0px 3.5px 10px -5px  gray;
+    background: white;
+    position: relative;
+    height: 400px;
+    margin-top: 50px;
+
+}
+
+#google-maps-title {
+    color: darkslategray;
+    /* background: lightgray; */
+    background: linear-gradient(to left, rgb(223, 223, 223), rgb(179, 176, 176));
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    border-radius: none;
+    letter-spacing: 3px;
+    width: 100%;
+}
+
+#google-maps-display {
+    position: absolute;
+    border: 1px solid black;
+    top: 65px;
+    left: 0px;
+}
+
+#google-maps-logo {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
 
 
 /* ============ FOOTER ============ */
@@ -362,6 +411,8 @@ footer {
     color: white;
     background: darkgray;
 }
+
+
 
 
 
@@ -380,12 +431,11 @@ footer {
 
     #submit-button {
         display: block;
-        margin: 0 auto;
     }
 
     #btnLogout {
         display: block;
-        margin: 0 auto;
+        margin-top: 15px;
     }
 }
 
@@ -408,7 +458,12 @@ footer {
 
 @media screen and (max-width: 1231px) {
     #submit-button {
-        margin-top: 20px;
+        margin-top: 15px;
+    }
+
+    #btnLogout {
+        display: block;
+        margin: 15px auto 0px auto;
     }
 }
 
@@ -431,7 +486,6 @@ footer {
         /* border: 1px solid red; */
         margin: 0px;
         margin-right: 0px;
-        margin-bottom: 20px;
 
     }
 
@@ -446,12 +500,9 @@ footer {
         margin-right: 0px;
     }
 
-    #submit-button {
-        margin: 0px auto;
 
-    }
 
-    .khan-results-header {
+    .meetup-results-header {
         color: white;
         background: linear-gradient(to right, black, rgb(216, 216, 216));
         display: inline-block;
@@ -465,6 +516,12 @@ footer {
         margin-top: 0px;
     }
 
+    .youtube-row {
+        padding: 0px;
+        margin: 0px;
+        border: 1px solid red;
+    }
+
     .youtube-results {
         background: white;
         box-shadow: 0px 2px 15px -2px  darkgray;
@@ -476,7 +533,10 @@ footer {
         background: white;    
         border: none;
         box-shadow: 0px 2px 15px -2px  darkgray;
+    }
 
+    .google-maps {
+        margin-bottom: 50px;
     }
 
 }
@@ -506,7 +566,11 @@ footer {
         margin: 20px auto;
     }
 
-    .khan-results-header {
+    #btnLogout {
+        margin-top: 0px;
+    }
+
+    .meetup-results-header {
         color: white;
         background: linear-gradient(to right, black, rgb(216, 216, 216));
         display: inline-block;
@@ -543,6 +607,8 @@ footer {
     .youtube-results {
         margin-top: 50px;
     }
+
+
 }
 
 
@@ -566,7 +632,11 @@ footer {
         margin: 10px;
     }
 
-    .khan-results-header {
+    #btnLogout {
+        margin-top: 10px;
+    }
+
+    .meetup-results-header {
         color: white;
         background: linear-gradient(to right, black, rgb(216, 216, 216));
         display: inline-block;
