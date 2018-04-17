@@ -250,9 +250,9 @@ $('#submit-button').click(function(event) {
             
             // Add the results of the Meetup API, the first upcoming event related to the language input by the user
 
-            $('.meetup-results').append("<div class = 'card-header text-dark'>" + JSON.stringify(data[0].name) + "</div>");
+            $('.meetup-results').append("<div class = 'card-header text-dark text-center font-weight-bold'>" + data[0].name + "</div>");
             $('.card-header').append("<ul class = 'list-group list-group-flush text-dark'> </ul>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].local_date) + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'> DATE: " + data[0].local_date + "</div>");
 
             //convert time from meetup to standard time
             var militaryTime = (data[0].local_time)
@@ -261,10 +261,10 @@ $('#submit-button').click(function(event) {
             console.log(time);
 
             //display time, address, venue name
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + time + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].venue.name) + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].venue.address_1) + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].link) + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>TIME (PST): " + time + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'> VENUE NAME: " + data[0].venue.name + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>ADDRESS: " + data[0].venue.address_1 + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>LINK: " + data[0].link + "</div>");
 
 
 
