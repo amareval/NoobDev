@@ -82,32 +82,32 @@ $(document).ready(function() {
   });
 
 
-  // SUBMIT BUTTON
-  $('#submit-button').click(function(event) {
+  // // SUBMIT BUTTON
+  // $('#submit-button').click(function(event) {
 
-    event.preventDefault();
+  //   event.preventDefault();
 
-    userKeywords = $('#keywords-input').val().trim();
-    console.log("User's keyword: " + userKeywords);
+  //   userKeywords = $('#keywords-input').val().trim();
+  //   console.log("User's keyword: " + userKeywords);
 
-    userId = firebase.auth().currentUser.uid;
-    console.log('userid: ' + userId);
+  //   userId = firebase.auth().currentUser.uid;
+  //   console.log('userid: ' + userId);
 
-    // STORE DATA INTO FIREBASE
-    database.ref('/users/' + userId).push({
-      userLanguage: userLanguage,
-      userSkillLevel: userSkillLevel,
-      userKeywords: userKeywords,
-      favorite: userSkillLevel + ' ' + userLanguage
-    }); // end WRITE DATA from firebase
+  //   // STORE DATA INTO FIREBASE
+  //   database.ref('/users/' + userId).push({
+  //     userLanguage: userLanguage,
+  //     userSkillLevel: userSkillLevel,
+  //     userKeywords: userKeywords,
+  //     favorite: userSkillLevel + ' ' + userLanguage
+  //   }); // end WRITE DATA from firebase
 
-    // CLEAR SEARCH FIELDS
-    $('.language-button').text('choose a programming concept');
-    $('.skill-level-button').text('choose your skill level');
-    $('#keywords-input').val('');
+  //   // CLEAR SEARCH FIELDS
+  //   $('.language-button').text('choose a programming concept');
+  //   $('.skill-level-button').text('choose your skill level');
+  //   $('#keywords-input').val('');
 
 
-  }); // end SUBMIT BUTTON
+  // }); // end SUBMIT BUTTON
 
   // READ DATA FROM FIREBASE AND DISPLAY IN WINDOW
   function getUserData(userId) {
@@ -189,6 +189,7 @@ $(document).ready(function() {
     
         $.ajax({
             url: queryURL,
+            dataType: 'jsonp',
             method: 'GET'
         }).then(function(response) {
 
@@ -235,18 +236,20 @@ $(document).ready(function() {
   }; // end writeUserData()
   
 
-
+//Submit button for Meetup API
 
 $('#submit-button').click(function(event) {
 
-            meetupId = 'key=5b52473129397b281452467819f1446';
+        meetupId = 'key=5b52473129397b281452467819f1446';
          var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
          console.log(queryURL);
     
         $.ajax({
             url: queryURL,
+            dataType: 'jsonp',
             method: 'GET'
         }).then(function(data) {
+          console.log(JSON.stringify(data));
             
             // Add the results of the Meetup API, the first upcoming event related to the language input by the user
 
