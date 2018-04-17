@@ -236,7 +236,49 @@ $(document).ready(function() {
   
 
 
-  // LOG OUT
+
+$('#submit-button').click(function(event) {
+
+            meetupId = 'key=5b52473129397b281452467819f1446';
+         var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
+         console.log(queryURL);
+    
+        $.ajax({
+            url: queryURL,
+            method: 'GET'
+        }).then(function(data) {
+            
+            // Add the results of the Meetup API, the first upcoming event related to the language input by the user
+
+            $('.meetup-results').append("<div class = 'card-header text-dark'>" + JSON.stringify(data[0].name) + "</div>");
+            $('.card-header').append("<ul class = 'list-group list-group-flush text-dark'> </ul>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].local_date) + "</div>");
+
+            //convert time from meetup to standard time
+            var militaryTime = (data[0].local_time)
+            var time = moment(militaryTime ,'HH:mm').format('hh:mm a');
+
+            console.log(time);
+
+            //display time, address, venue name
+            $('.list-group').append("<div class = 'list-group-item text-dark'>" + time + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].venue.name) + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].venue.address_1) + "</div>");
+            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].link) + "</div>");
+
+
+
+            var meetupAddress = data[0].venue.address_1;
+
+
+
+            console.log(JSON.stringify(data));
+
+
+        });
+    });
+
+    // LOG OUT
   $('#btnLogout').on('click', function() {
 
       firebase.auth().signOut().then(function() {
