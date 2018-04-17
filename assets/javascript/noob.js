@@ -250,7 +250,7 @@ $('#submit-button').click(function(event) {
             
             // Add the results of the Meetup API, the first upcoming event related to the language input by the user
 
-            $('.meetup-results').append("<div class = 'card-header text-dark'>" + data[0].name + "</div>");
+            $('.meetup-results').append("<div class = 'card-header text-dark text-center font-weight-bold'>" + data[0].name + "</div>");
             $('.card-header').append("<ul class = 'list-group list-group-flush text-dark'> </ul>");
             $('.list-group').append("<div class = 'list-group-item text-dark'> DATE: " + data[0].local_date + "</div>");
 
