@@ -107,6 +107,46 @@ $(document).ready(function() {
     $('#keywords-input').val('');
 
 
+    var meetupId = 'key=5b52473129397b281452467819f1446';
+    var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
+    console.log('query: ' + queryURL);
+    
+    $.ajax({
+        url: queryURL,
+        method: 'GET'
+    }).then(function(data) {
+      console.log('meetup: ' + data);
+        
+        // Add the results of the Meetup API, the first upcoming event related to the language input by the user
+
+        $('.meetup-results-info').html("<div>" + data[0].name + "</div>");
+
+        $('.meetup-results-info').append("<div>" + data[0].local_date + "</div>");
+
+        //convert time from meetup to standard time
+        var militaryTime = (data[0].local_time)
+        var time = moment(militaryTime ,'HH:mm').format('hh:mm a');
+
+        console.log(time);
+
+        //display time, address, venue name
+        $('.meetup-results-info').append("<div>" + time + "</div>");
+        $('.meetup-results-info').append("<div>" + data[0].venue.name + "</div>");
+        $('.meetup-results-info').append("<div>" + data[0].venue.address_1 + "</div>");
+        $('.meetup-results-info').append("<div>" + data[0].link + "</div>");
+
+
+
+        var meetupAddress = data[0].venue.address_1;
+
+
+      $('#google-maps-display').attr('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyBhSBjmU-q9Jf9qFxhho_cfQjWwo2aJcYs&q=" + meetupAddress);
+
+
+
+    });
+
+
   }); // end SUBMIT BUTTON
 
   // READ DATA FROM FIREBASE AND DISPLAY IN WINDOW
@@ -118,6 +158,7 @@ $(document).ready(function() {
   
       // CREATE 'FAVORITE' BUTTON BASED ON USER SELECTIONS
       var favoriteButtonsDiv = $('.favorite-buttons-div');
+      var favoriteButtonItem = $('<div class="favorite-button-item">');
       favoriteButton = $('<button class="favorite-button">');
       favoriteButton.attr('favorite-data', ts.favorite);
 
@@ -130,10 +171,22 @@ $(document).ready(function() {
       }
 
       favoriteButton.html(ts.userLanguage + ' - ' + ts.userKeywords);
-      favoriteButtonsDiv.append(favoriteButton);
+      favoriteButtonItem.append(favoriteButton);
+      favoriteButtonsDiv.append(favoriteButtonItem);
+
+      // var closeButton = $('<button type="button" class="close" id="remove-favorite">');
+      // var closeIcon = $('<span class="close">');
+      // closeIcon.html('&times;');
+      // closeButton.append(closeIcon);
+      // favoriteButtonItem.append(closeButton);
+
+
+      // $('.close').click(function() {
+      //   $(this).parent().remove();
+      // });
 
       var youTubeUpperCase = (ts.favorite).toUpperCase();
-      $('.youtube-header').html('YOUTUBE RESULTS FOR ' + youTubeUpperCase);
+      $('.youtube-header').html('YOUTUBE RESULTS FOR <br>' + youTubeUpperCase);
 
   
       // ============== YOUTUBE API ================ //
@@ -172,8 +225,6 @@ $(document).ready(function() {
       });
 
 
-      // $('#google-maps-display').attr('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyBhSBjmU-q9Jf9qFxhho_cfQjWwo2aJcYs&q=" + ts.destination);
-
   
   
       // ON 'FAVORITE' BUTTON CLICK
@@ -182,7 +233,7 @@ $(document).ready(function() {
         console.log('Favorite: ' + userFavorite);
 
         var youTubeUpperCase = (userFavorite).toUpperCase();
-        $('.youtube-header').html('YOUTUBE RESULTS FOR ' + youTubeUpperCase);
+        $('.youtube-header').html('YOUTUBE RESULTS FOR <br>' + youTubeUpperCase);
   
          youTubeId = 'AIzaSyBtv3FuM4yag2Qpr17dHewi4EmhFzeWEy0';
          queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + userFavorite + "&key=" + youTubeId + '&maxResults=10' + '&type=video';
@@ -213,17 +264,50 @@ $(document).ready(function() {
           $('#youtube-video-9').attr('src', 'https://www.youtube.com/embed/' + response.items[8].id.videoId);
 
           $('#youtube-video-10').attr('src', 'https://www.youtube.com/embed/' + response.items[9].id.videoId);
+
+
+          
         
-        $('.slider').slick({
-          dots: true,
-          infinite: true,
-          autoplay:true,
-          autoplaySpeed: 2000,
-          arrows:true,
-          slidesToShow: 4,
-          nextArrow: '.slick-next',
-          prevArrow: '.slick-prev'
-        });
+          $('.slider').slick({
+            dots: true,
+            autoplay:true,
+            autoplaySpeed: 3500,
+            infinte: true,
+            accessibility: true,
+            arrows:true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            nextArrow: '.slick-next',
+            prevArrow: '.slick-prev',
+            responsive: [
+              {
+                breakpoint: 1650,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 1
+                }
+              },
+              {
+                breakpoint: 1250,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1
+                }
+              },
+              {
+                breakpoint: 1008,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                }
+              },
+              // {
+              //   breakpoint: 980,
+              //   settings: "unslick"
+              // }
+        
+            ]
+          });
     
 
         }); // end AJAX call
@@ -236,47 +320,6 @@ $(document).ready(function() {
   
 
 
-
-$('#submit-button').click(function(event) {
-
-            meetupId = 'key=5b52473129397b281452467819f1446';
-         var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
-         console.log(queryURL);
-    
-        $.ajax({
-            url: queryURL,
-            method: 'GET'
-        }).then(function(data) {
-            
-            // Add the results of the Meetup API, the first upcoming event related to the language input by the user
-
-            $('.meetup-results').append("<div class = 'card-header text-dark'>" + JSON.stringify(data[0].name) + "</div>");
-            $('.card-header').append("<ul class = 'list-group list-group-flush text-dark'> </ul>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].local_date) + "</div>");
-
-            //convert time from meetup to standard time
-            var militaryTime = (data[0].local_time)
-            var time = moment(militaryTime ,'HH:mm').format('hh:mm a');
-
-            console.log(time);
-
-            //display time, address, venue name
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + time + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].venue.name) + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].venue.address_1) + "</div>");
-            $('.list-group').append("<div class = 'list-group-item text-dark'>" + JSON.stringify(data[0].link) + "</div>");
-
-
-
-            var meetupAddress = data[0].venue.address_1;
-
-
-
-            console.log(JSON.stringify(data));
-
-
-        });
-    });
 
     // LOG OUT
   $('#btnLogout').on('click', function() {

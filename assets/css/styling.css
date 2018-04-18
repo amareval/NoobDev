@@ -226,7 +226,7 @@ header {
     letter-spacing: 3px;
     border: none;
     padding: 10px 20px 10px 20px;
-    margin: 10px
+    margin: 10px;
 }
 
 #beginner-button {
@@ -241,6 +241,15 @@ header {
     background: radial-gradient(circle, #FFCE33, #CCA119)
 }
 
+.favorite-button-item {
+    display: inline-block;
+}
+
+.close { 
+    position: relative;
+    top: -1px;
+    right: 8.5px;
+}
 
 
  /* ============ YOUTUBE RESULTS ============ */
@@ -310,47 +319,6 @@ header {
 
 }
 
-.meetup-item {
-    padding: 20px;
-    width: 95%;
-    border: 1px solid lightgray;
-    box-shadow: 0px 2px 15px -5px  darkgray;
-
-}
-
-#meetup-item-1 {
-    position: absolute;
-    display: inline-block;
-    top: 100px;
-    left: 20px;
-}
-
-#meetup-item-2 {
-    position: absolute;
-    display: inline-block;
-    top: 225px;
-    left: 20px;
-}
-
-#meetup-item-3 {
-    position: absolute;
-    display: inline-block;
-    top: 350px;
-    left: 20px;
-}
-
-.meetup-item-title {
-    font-size: 24px;
-}
-
-.meetup-item p {
-    margin-bottom: 0;
-}
-
-.meetup-item-description {
-    font-size: 14px;
-}
-
 #meetup-logo {
     width: 60px;
     height: 60px;
@@ -359,6 +327,9 @@ header {
     right: 0px;
 }
 
+.meetup-results-info {
+    text-align: center;
+}
 
 /* ======== GOOGLE MAPS RESULTS ========== */
 
