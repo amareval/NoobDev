@@ -110,13 +110,12 @@ $(document).ready(function() {
     
     meetupfunk();
     
-        var meetupAddress = data[0].venue.address_1;
+        var meetupAddress = results.data[0].venue.address_1;
 
     
-      $('#google-maps-display').attr('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyBhSBjmU-q9Jf9qFxhho_cfQjWwo2aJcYs&q=" + meetupAddress);
 
 
-    });
+
 
 
   }); // end SUBMIT BUTTON
@@ -298,11 +297,11 @@ $(document).ready(function() {
 
      
          //Function to call the meetup api on the submit function
-    function meetupfunk(){
+    function meetupfunk() {
 
       //API KEY and URL
       meetupId = 'key=5b52473129397b281452467819f1446';
-    var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
+      var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
 
         $.ajax({
             url: queryURL,
@@ -332,17 +331,15 @@ $(document).ready(function() {
             $('.meetup-results-info').append("<div class = 'list-group-item text-dark'>ADDRESS: " + results.data[0].venue.address_1 + "</div>");
             $('.meetup-results-info').append("<div class = 'list-group-item text-dark'>LINK: " + results.data[0].link + "</div>");
 
-
-
             var meetupAddress = results.data[0].venue.address_1;
-
-
 
             console.log(JSON.stringify(data));
 
+            $('#google-maps-display').attr('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyBhSBjmU-q9Jf9qFxhho_cfQjWwo2aJcYs&q=" + meetupAddress);
+
 
         });
-      };
+    };
     // });
 
 
