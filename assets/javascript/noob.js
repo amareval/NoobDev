@@ -84,7 +84,7 @@ $(document).ready(function() {
 
   // SUBMIT BUTTON
   $('#submit-button').click(function(event) {
-
+    
     event.preventDefault();
 
     userKeywords = $('#keywords-input').val().trim();
@@ -106,42 +106,14 @@ $(document).ready(function() {
     $('.skill-level-button').text('choose your skill level');
     $('#keywords-input').val('');
 
-
-    var meetupId = 'key=5b52473129397b281452467819f1446';
-    var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
-    console.log('query: ' + queryURL);
+    // Call the MEETUP API FUNCTION
     
-    $.ajax({
-        url: queryURL,
-        method: 'GET'
-    }).then(function(data) {
-      console.log('meetup: ' + data);
-        
-        // Add the results of the Meetup API, the first upcoming event related to the language input by the user
-
-        $('.meetup-results-info').html("<div>" + data[0].name + "</div>");
-
-        $('.meetup-results-info').append("<div>" + data[0].local_date + "</div>");
-
-        //convert time from meetup to standard time
-        var militaryTime = (data[0].local_time)
-        var time = moment(militaryTime ,'HH:mm').format('hh:mm a');
-
-        console.log(time);
-
-        //display time, address, venue name
-        $('.meetup-results-info').append("<div>" + time + "</div>");
-        $('.meetup-results-info').append("<div>" + data[0].venue.name + "</div>");
-        $('.meetup-results-info').append("<div>" + data[0].venue.address_1 + "</div>");
-        $('.meetup-results-info').append("<div>" + data[0].link + "</div>");
-
-
-
+    meetupfunk();
+    
         var meetupAddress = data[0].venue.address_1;
 
-
+    
       $('#google-maps-display').attr('src', "https://www.google.com/maps/embed/v1/place?key=AIzaSyBhSBjmU-q9Jf9qFxhho_cfQjWwo2aJcYs&q=" + meetupAddress);
-
 
 
     });
@@ -319,6 +291,59 @@ $(document).ready(function() {
   }; // end writeUserData()
   
 
+//Submit button for Meetup API
+
+// $('#submit-button').click(function(event) {
+
+
+     
+         //Function to call the meetup api on the submit function
+    function meetupfunk(){
+
+      //API KEY and URL
+      meetupId = 'key=5b52473129397b281452467819f1446';
+    var queryURL = "https://api.meetup.com/find/events/?" + meetupId + "&sign=true&photo-host=public&page=1&text=" + userLanguage + "&radius=20";
+
+        $.ajax({
+            url: queryURL,
+            dataType: 'jsonp',
+            method: 'GET'
+
+        }).then(function(data) {
+          var results = data;
+          console.log(results.data[0].name);
+
+
+            // Add the results of the Meetup API, the first upcoming event related to the language input by the user
+
+            $('.meetup-results-info').html("<div class = 'card-header text-dark text-center font-weight-bold'>" + results.data[0].name + "</div>");
+            $('.meetup-results-info').append("<ul class = 'list-group list-group-flush text-dark'> </ul>");
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'> DATE: " + results.data[0].local_date + "</div>");
+
+            //convert time from meetup to standard time
+            var militaryTime = (results.data[0].local_time)
+            var time = moment(militaryTime ,'HH:mm').format('hh:mm a');
+
+            console.log(time);
+
+            //display time, address, venue name
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'>TIME (PST): " + time + "</div>");
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'> VENUE NAME: " + results.data[0].venue.name + "</div>");
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'>ADDRESS: " + results.data[0].venue.address_1 + "</div>");
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'>LINK: " + results.data[0].link + "</div>");
+
+
+
+            var meetupAddress = results.data[0].venue.address_1;
+
+
+
+            console.log(JSON.stringify(data));
+
+
+        });
+      };
+    // });
 
 
     // LOG OUT
