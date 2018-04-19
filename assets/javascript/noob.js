@@ -7,7 +7,8 @@ $(document).ready(function() {
   var userKeywords;
   var favoriteButton;
 
-
+   
+	
   // AUTHORIZE USER LOG-IN
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
@@ -63,10 +64,12 @@ $(document).ready(function() {
     ]
   });
 
+
+
   // TAKE VALUES FROM DROPDOWN MENUS
   $(".dropdown-language li").on('click', function(){
     $(".language-button").html($(this).html());
-
+	  
     userChoice = $(this).attr('id');
     userLanguage = userChoice;
     console.log("User's programming language: " + userChoice);
@@ -82,9 +85,19 @@ $(document).ready(function() {
   });
 
 
+  // SETTING DROPDOWN DEFAULTS TO BASIC AND BEGINNER	
+  $('.language-button').text('basic');
+  $('.skill-level-button').text('beginner');
+  $('#keywords-input').val('');
+
+  userChoice = 'basic' 
+  userLanguage = userChoice;
+  
+  userSkillLevel = 'beginner'; 
+
   // SUBMIT BUTTON
   $('#submit-button').click(function(event) {
-    
+
     event.preventDefault();
 
     userKeywords = $('#keywords-input').val().trim();
@@ -102,8 +115,13 @@ $(document).ready(function() {
     }); // end WRITE DATA from firebase
 
     // CLEAR SEARCH FIELDS
-    $('.language-button').text('choose a programming concept');
-    $('.skill-level-button').text('choose your skill level');
+    //$('.language-button').text('choose a programming concept');
+    //$('.skill-level-button').text('choose your skill level');
+    
+    // ...OR RESET THEM TO BASIC - BEGINNER
+    $('.language-button').text('basic');
+    $('.skill-level-button').text('beginner');
+
     $('#keywords-input').val('');
 
     // Call the MEETUP API FUNCTION
@@ -126,8 +144,7 @@ $(document).ready(function() {
       var ts = snapshot.val();
       console.log(ts);
   
-  
-      // CREATE 'FAVORITE' BUTTON BASED ON USER SELECTIONS
+            // CREATE 'FAVORITE' BUTTON BASED ON USER SELECTIONS
       var favoriteButtonsDiv = $('.favorite-buttons-div');
       var favoriteButtonItem = $('<div class="favorite-button-item">');
       favoriteButton = $('<button class="favorite-button">');
