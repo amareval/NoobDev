@@ -109,14 +109,7 @@ $(document).ready(function() {
     // Call the MEETUP API FUNCTION
     
     meetupfunk();
-    
-        var meetupAddress = results.data[0].venue.address_1;
-
-    
-
-
-
-
+    var meetupAddress = results.data[0].venue.address_1;
 
   }); // end SUBMIT BUTTON
 
@@ -162,7 +155,7 @@ $(document).ready(function() {
   
       // ============== YOUTUBE API ================ //
       var youTubeId = 'AIzaSyBtv3FuM4yag2Qpr17dHewi4EmhFzeWEy0';
-      var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + ts.userLanguage + "+" + ts.userSkillLevel + "+" + ts.userKeywords + "&maxResults=10" + "&key=" + youTubeId + '&type=video';
+      var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=programming+computer+science+" + ts.userLanguage + "+" + ts.userSkillLevel + "+" + ts.userKeywords + "&maxResults=10" + "&key=" + youTubeId + '&type=video';
   
       $.ajax({
         url: queryURL,
@@ -203,11 +196,16 @@ $(document).ready(function() {
         userFavorite = $(this).attr('favorite-data');
         console.log('Favorite: ' + userFavorite);
 
+            
+        meetupfunk();
+        
+        // var meetupAddress = results.data[0].venue.address_1;
+
         var youTubeUpperCase = (userFavorite).toUpperCase();
         $('.youtube-header').html('YOUTUBE RESULTS FOR <br>' + youTubeUpperCase);
   
          youTubeId = 'AIzaSyBtv3FuM4yag2Qpr17dHewi4EmhFzeWEy0';
-         queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + userFavorite + "&key=" + youTubeId + '&maxResults=10' + '&type=video';
+         queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=programming+computer+science+" + userFavorite + "&key=" + youTubeId + '&maxResults=10' + '&type=video';
     
         $.ajax({
             url: queryURL,
@@ -317,7 +315,7 @@ $(document).ready(function() {
 
             $('.meetup-results-info').html("<div class = 'card-header text-dark text-center font-weight-bold'>" + results.data[0].name + "</div>");
             $('.meetup-results-info').append("<ul class = 'list-group list-group-flush text-dark'> </ul>");
-            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'> DATE: " + results.data[0].local_date + "</div>");
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'><span style='font-weight:bold'>DATE: </span>" + results.data[0].local_date + "</div>");
 
             //convert time from meetup to standard time
             var militaryTime = (results.data[0].local_time)
@@ -326,10 +324,14 @@ $(document).ready(function() {
             console.log(time);
 
             //display time, address, venue name
-            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'>TIME (PST): " + time + "</div>");
-            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'> VENUE NAME: " + results.data[0].venue.name + "</div>");
-            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'>ADDRESS: " + results.data[0].venue.address_1 + "</div>");
-            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'>LINK: " + results.data[0].link + "</div>");
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'><span style='font-weight:bold'>TIME (PST): </span>" + time + "</div>");
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'><span style='font-weight:bold'>VENUE: </span>" + results.data[0].venue.name + "</div>");
+            $('.meetup-results-info').append("<div class = 'list-group-item text-dark'><span style='font-weight:bold'>ADDRESS: </span>" + results.data[0].venue.address_1 + "</div>");
+
+            var meetupUrl = results.data[0].link;
+            var meetupUrlDiv = $('<a class="list-group-item text-dark meetup-url" style="color:blue" href="' + meetupUrl + '" target="_blank">');
+            meetupUrlDiv.html("<span style='font-weight:bold'>LINK: </span>" + '<span style="color:blue">' + meetupUrl + '</span>');
+            $('.meetup-results-info').append(meetupUrlDiv);
 
             var meetupAddress = results.data[0].venue.address_1;
 
