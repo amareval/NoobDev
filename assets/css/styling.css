@@ -341,7 +341,6 @@ header {
     position: relative;
     height: 400px;
     margin-top: 50px;
-
 }
 
 #google-maps-title {
@@ -355,13 +354,16 @@ header {
     border-radius: none;
     letter-spacing: 3px;
     width: 100%;
+    z-index: 1;
+    position: relative;
 }
 
 #google-maps-display {
     position: absolute;
     border: 1px solid black;
-    top: 65px;
     left: 0px;
+    height: 356px;
+    top: 44px;
 }
 
 #google-maps-logo {
@@ -490,7 +492,6 @@ footer {
     .youtube-row {
         padding: 0px;
         margin: 0px;
-        border: 1px solid red;
     }
 
     .youtube-results {
