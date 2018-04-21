@@ -386,8 +386,31 @@ footer {
 }
 
 
+/* ============ POPUP ADD ============ */
 
+/* Style the banner */
+.banner {
+  padding: 10px 16px;
+  color: #f1f1f1;
+  height: 50%;
+  width: 50%;
+}
+.adPic {
+  height: 50%;
+}
+/* Page content */
+.content {
+  padding: 16px;
+}
 
+.sticky, .banner {
+  position: fixed;
+  top: 25%;
+  width: 50%
+}
+
+.sticky + .content {
+  padding-top: 102px;
 
 
 /* ============ MEDIA QUERIES ============ */
