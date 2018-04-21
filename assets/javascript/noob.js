@@ -7,8 +7,42 @@ $(document).ready(function() {
   var userKeywords;
   var favoriteButton;
 
-   
-	
+  // POPUP AD CONTENT
+  // When the user scrolls the page, execute myFunction
+  window.onscroll = function() {myFunction()};
+
+  // Get the banner
+  var banner = document.getElementById("adBanner");
+
+  // Get the offset position of the navbar
+  var sticky = banner.offsetTop;
+
+  // Add the sticky class to the banner when you reach its scroll position. 
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      banner.classList.add("sticky");
+    } else {
+      banner.classList.remove("sticky");
+    }
+  }
+  // Popup ad timing
+  // Ad will appear 60 seconds after logging in.
+  var adPopup = setInterval(adTimer, 60000);
+
+  function adTimer() {
+    document.getElementById("popUP").innerHTML =
+    '<div class="banner"><a href="https://www.okcupid.com/match?keywords=Coding&only_text=1"><img src="assets/images/omarAd.png" style="width:55%;height:auto;"></a></div>';
+ 
+  // Ad will disappear after 15 seconds.
+  var closePopup = setInterval(closeTimer, 15000);
+
+    function closeTimer() {
+      document.getElementById("popUP").innerHTML = '';
+      clearInterval(adPopup);
+      clearInterval(closePopup);
+    };
+  }; // end of POP UP AD
+  	
   // AUTHORIZE USER LOG-IN
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
@@ -304,6 +338,7 @@ $(document).ready(function() {
           }); // end SLICK
     
         }); // end AJAX call
+
 
       }); // end FAVORITE BUTTON click
   
